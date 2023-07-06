@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-
+import useHttp from './hooks/use-http';
 import Tasks from './components/Tasks/Tasks';
 import NewTask from './components/NewTask/NewTask';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [tasks, setTasks] = useState([]);
+  useHttp({ url: 'https://task-record-app-default-rtdb.firebaseio.com/tasks.json' });
 
-  const fetchTasks = async (taskText) => {
+  const fetchTasks = async () => {
     setIsLoading(true);
     setError(null);
     try {
