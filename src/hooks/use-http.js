@@ -32,7 +32,12 @@ const useHttp = (requestConfig, applyData) => {
     setIsLoading(false);
   };
 
-  return
+  return {
+    // since we are using the same property names as variable names we can omit the names on the right but i won't be doing that for the sake of better readability
+    isLoading: isLoading,
+    error: error,
+    sendRequests: sendRequests
+  }
 };
 
 export default useHttp;
