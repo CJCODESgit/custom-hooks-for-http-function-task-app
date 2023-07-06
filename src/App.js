@@ -5,6 +5,17 @@ import NewTask from './components/NewTask/NewTask';
 
 function App() {
   const [tasks, setTasks] = useState([]);
+
+  const transformTasks = tasksObj => {
+    const loadedTasks = [];
+
+    for (const taskKey in tasksObj) {
+      loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
+    }
+
+    setTasks(loadedTasks);
+  };
+
   useHttp({ url: 'https://task-record-app-default-rtdb.firebaseio.com/tasks.json' });
 
   const fetchTasks = async () => {
