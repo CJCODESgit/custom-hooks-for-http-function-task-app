@@ -16,7 +16,7 @@ function App() {
     setTasks(loadedTasks);
   };
 
-  const { isLoading, error, sendRequest: fetchTasks } = useHttp({ url: 'https://task-record-app-default-rtdb.firebaseio.com/tasks.json' }, transformTasks);
+  const { isLoading, error, sendRequests: fetchTasks } = useHttp({ url: 'https://task-record-app-default-rtdb.firebaseio.com/tasks.json' }, transformTasks);
 
 
   useEffect(() => {

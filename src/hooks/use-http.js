@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import(useState)
 
 const useHttp = (requestConfig, applyData) => {
   const [isLoading, setIsLoading] = useState(false);
