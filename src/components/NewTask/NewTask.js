@@ -5,10 +5,20 @@ import TaskForm from './TaskForm';
 
 const NewTask = (props) => {
   const { isLoading, error, sendRequests: sendTaskRequest } = useHttp();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+
 
   const enterTaskHandler = async (taskText) => {
+
+    sendTaskRequest({
+      url: 'https://task-record-app-default-rtdb.firebaseio.com/tasks.json',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: { text: taskText }
+    },);
+
+
     setIsLoading(true);
     setError(null);
     try {
