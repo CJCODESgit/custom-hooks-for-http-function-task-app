@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
 
 
-const useHttp = (requestConfig, applyData) => {
+const useHttp = (applyData) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
 
-  const sendRequests = useCallback(async () => {
+  const sendRequests = useCallback(async (requestConfig) => {
     setIsLoading(true);
     setError(null);
     try {
@@ -29,7 +29,7 @@ const useHttp = (requestConfig, applyData) => {
       setError(err.message || 'Something went wrong!');
     }
     setIsLoading(false);
-  }, [requestConfig, applyData]);
+  }, [applyData]);
 
   return {
     // since we are using the same property names as variable names we can omit the names on the right but i won't be doing that for the sake of better readability
