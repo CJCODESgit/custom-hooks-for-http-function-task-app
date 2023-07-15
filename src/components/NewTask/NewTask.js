@@ -6,7 +6,7 @@ import TaskForm from './TaskForm';
 const NewTask = (props) => {
   const { isLoading, error, sendRequests: sendTaskRequest } = useHttp();
 
-  const createTask = (taskData) => {
+  const createTask = (taskText, taskData) => {
     const generatedId = taskData.name; // firebase-specific => "name" contains generated id
     const createdTask = { id: generatedId, text: taskText };
 
@@ -21,7 +21,8 @@ const NewTask = (props) => {
         'Content-Type': 'application/json',
       },
       body: { text: taskText }
-    }, createTask);
+    }, createTask.bind(null, taskText)
+    );
   };
 
   return (
